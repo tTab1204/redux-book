@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Loading() {
-  return <marquee>📚</marquee>
+  return <span>📚</span>
 }
 
 export default Loading
