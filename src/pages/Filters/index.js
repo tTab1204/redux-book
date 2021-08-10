@@ -7,6 +7,20 @@ import Fieldset from '../../components/Form/Fieldset'
 import Select from '../../components/Form/Select'
 import Radio from '../../components/Form/Radio'
 
+const selectList = [
+  ['', '없음'],
+
+  ['partial', '미리보기 가능'],
+
+  ['full', '전체 공개'],
+
+  ['ebooks', '전체 eBooks'],
+
+  ['free-ebooks', '무료 eBooks'],
+
+  ['paid-ebooks', '유료 eBooks']
+]
+
 function Filters() {
   const history = useHistory()
   const { state, handleChange, handleSubmit } = useForm()
@@ -19,14 +33,7 @@ function Filters() {
       <Stack gaps={[0, 20, 20, 40]}>
         <Fieldset legend="필터링">
           <Select id="filter" value={state.filter} onChange={handleChange}>
-            {[
-              ['', '없음'],
-              ['partial', '미리보기 가능'],
-              ['full', '전체 공개'],
-              ['ebooks', '전체 eBooks'],
-              ['free-ebooks', '무료 eBooks'],
-              ['paid-ebooks', '유료 eBooks']
-            ].map(([value, label]) => (
+            {selectList.map(([value, label]) => (
               <option key={value} value={value}>
                 {label}
               </option>
