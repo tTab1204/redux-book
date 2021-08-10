@@ -10,16 +10,16 @@ function Pagination() {
   const isLoading = status === Status.Loading
   const isArrayEmpty = error !== null
 
+  const handleClick = () => {
+    if (isLoading) return
+    dispatch(fetchBooks(location.search, startIndex))
+  }
+
   return (
     <button
       className={styles.button}
       disabled={startIndex === 0 || isLoading}
-      onClick={() => {
-        if (isLoading) {
-          return
-        }
-        dispatch(fetchBooks(location.search, startIndex))
-      }}
+      onClick={handleClick}
     >
       {!isArrayEmpty && (isLoading ? '로딩중...' : '더보기')}
       {isArrayEmpty && <h2>검색된 책이 없습니다.</h2>}
