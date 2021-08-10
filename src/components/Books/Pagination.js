@@ -6,8 +6,9 @@ import { useLocation } from 'react-router-dom'
 function Pagination() {
   const dispatch = useDispatch()
   const location = useLocation()
-  const { status, startIndex } = useSelector(selectBooks)
+  const { status, startIndex, error } = useSelector(selectBooks)
   const isLoading = status === Status.Loading
+  const isArrayEmpty = error !== null
 
   return (
     <button
@@ -20,7 +21,8 @@ function Pagination() {
         dispatch(fetchBooks(location.search, startIndex))
       }}
     >
-      {isLoading ? '로딩중...' : '더보기'}
+      {!isArrayEmpty && (isLoading ? '로딩중...' : '더보기')}
+      {isArrayEmpty && <h2>검색된 책이 없습니다.</h2>}
     </button>
   )
 }
