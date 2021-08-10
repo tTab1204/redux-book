@@ -27,6 +27,9 @@ function Book({ defaultClassName, volumeInfo }) {
           <div className={styles.title} title={volumeInfo?.title}>
             {volumeInfo?.title}
           </div>
+          <div className={styles.description}>
+            <button className={styles.button}>구매 링크</button>
+          </div>
           <p
             className={cx(
               styles.description,
@@ -62,7 +65,9 @@ const styles = {
   description: 'text-gray-700 text-base',
   meta: 'flex items-center text-sm',
   authors: 'mr-2 text-gray-900',
-  publishedDate: 'text-gray-600'
+  publishedDate: 'text-gray-600',
+  button:
+    'bg-blue-500 hover:bg-blue-400 mb-8 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
 }
 
 export default Book
