@@ -7,12 +7,13 @@ import {
   useLocation
 } from 'react-router-dom'
 import { useTransition, animated } from 'react-spring'
+import Navbar from './components/Navbar'
 import { Main, Result, Filters } from './pages'
 import store from './store'
 
 function Routes() {
   const location = useLocation()
-  const transitions = useTransition(location, location => location.pathname, {
+  const transitions = useTransition(location, (location) => location.pathname, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
@@ -40,6 +41,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className={styles.wrapper}>
+          <Navbar />
           <Routes />
         </div>
       </Router>
